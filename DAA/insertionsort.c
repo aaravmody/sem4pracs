@@ -12,7 +12,7 @@ void insertion(int arr[])
         while((temp<arr[j])&&(j>=0))
         {
             arr[j+1]=arr[j];
-            j=j-1;
+            j--;
         }
         arr[j+1]=temp;
     }

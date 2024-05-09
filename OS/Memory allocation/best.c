@@ -8,7 +8,7 @@ struct memory{
     int space,isfilled;
 }mem[10];
 
-void main()
+int main()
 {
 
     int pro,memspace;
@@ -64,5 +64,5 @@ void main()
         }
     }
     
-
+return 0;
 }

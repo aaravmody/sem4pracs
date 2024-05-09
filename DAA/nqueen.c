@@ -24,7 +24,7 @@ void nqueen(int k, int n){
             if(k==n-1)
             {
                 for(int p=0; p<n; p++)
-                    printf("%d ", x[p]);
+                printf("%d ", x[p]);
                 printf("\n");
             }
             else
