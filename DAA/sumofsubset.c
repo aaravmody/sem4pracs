@@ -1,40 +1,34 @@
-#include <stdio.h>
-#define n 7
+#include<stdio.h>
 
-int x[n], m = 35, w[n] = {15,7,20,5,18,10,12};
+int w[50]={5,10,12,13,15,18},x[50],m=30,n=6;
 
-int sumofsubset(int i,int s,int r)
+void SumOfSubset(int s,int k,int r)
 {
-    x[i]=1;
-    if((s+w[i])==m)
+    x[k]=1;
+    if(s+w[k]==m)
     {
+        printf("\nans:");
+        for(int i=0;i<6;i++)
+        {
+            printf("%d ",x[i]);
+        }
         printf("\n");
-        for(int f=0;f<=i;f++)
-        {
-            printf("%d ",w[f]*x[f]);
-        }
-        for(int j=i+1;j<n;j++)
-        {
-            printf("%d ",0);
-        }
     }
-    else if((s+w[i]+w[i+1])<=m)
+    else if(s+w[k]+w[k+1]<=m)
     {
-        sumofsubset(i+1,s+w[i],r-w[i]);
+        // printf("\ns:%d k:%d r:%d",s,k,r);
+        SumOfSubset(s+w[k],k+1,r-w[k]);
     }
-
-    if((s + w[i+1]) <= m && (s + r - w[i]) >= m){
-        x[i] = 0;
-        sumofsubset(i+1,s,r-w[i]);
+    if(s+w[k+1]<=m && s+r-w[k]>=m)
+    {
+        x[k]=0;
+        // printf("\ns:%d k:%d r:%d",s,k,r);
+        SumOfSubset(s,k+1,r-w[k]);
     }
+    x[k] = 0;
 }
 
-
-void main(){
-    int s=0,r=0;
-    for (int i=0; i<n; i++){
-        r += w[i];
-        x[i] = 0;
-    }
-    sumofsubset(0,s,r);
+void main()
+{
+    SumOfSubset(0,0,73);
 }
