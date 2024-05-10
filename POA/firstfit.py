@@ -1,18 +1,14 @@
-space = []
-insert = []
-n=0
+spaces=input('enter spaces: ').split(' ')
+spaces=[int(i) for i in spaces]
 
-n=int(input("N"))
-for i in range(n):
-    space.append(int(input("Enter space: ")))
-for i in range(n):
-    insert.append(int(input("Enter space: ")))
+inserts=input('enter inserts: ').split(' ')
+inserts=[int(i) for i in inserts]
 
-for i in insert:
-    for j in range(space):
-        if(i<space[j]):
-            print("inserted",i,"at",space[j])
-        space[j]-=i
-        break
-    if j==len(space)-1:
-        print("cannot insert")
+for i in inserts:
+    for j in range(len(spaces)):
+        if i<spaces[j]:
+            print('inserted ',i,' at space ',spaces[j])
+            spaces[j]-=i
+            break
+    if j==len(spaces)-1:
+        print('canot insert ',i)

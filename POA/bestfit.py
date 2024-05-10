@@ -1,22 +1,19 @@
-space = []
-insert = []
-n=0
+spaces=input('enter spaces: ').split(' ')
+spaces=[int(i) for i in spaces]
+spaces.sort()
 
-n=int(input("N"))
-for i in range(n):
-    space.append(int(input("Enter space: ")))
-for i in range(n):
-    insert.append(int(input("Enter space: ")))
+inserts=input('enter inserts: ').split(' ')
+inserts=[int(i) for i in inserts]
 
-for i in insert:
+for i in inserts:
     j=0
-    while(j < len(space)):
-        if(i<space[j]):
+    while j<len(spaces):
+        if i<spaces[j]:
             break
         j+=1
-    if j==len(space)-1:
-        print("cannot insert")
-    elif i<space[j]:
-        print("inserted",i,"at",space[j])
-        space[j]-=i
-        space.sort()
+    if j==len(spaces):
+        print('cannot insert ',i)
+    elif i<spaces[j]:
+        print('inserted ',i,' at space ',spaces[j])
+        spaces[j]-=i
+        spaces.sort()
