@@ -37,11 +37,10 @@ void consumer(){
 }
 
 void main(){
-    int choice;
-    printf("Enter : 1. Consumer, 2. Producer, 3.Exit : \n");
+    int choice,arr[20]={1,2};
     while(1){
         printf("Choice : ");
-        scanf("%d", &choice);
+        choice=arr[(rand()%2)];
         switch(choice){
             case 1:
             if(semaphore == 1 && full!=0){
@@ -63,5 +62,6 @@ void main(){
             exit(0);
             break;
         }
+        sleep(2);
     }
 }
