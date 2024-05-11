@@ -1,0 +1,11 @@
+table{
+    border: 10px;
+    border-color: black;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 50px;
+}
+
+table td{
+    padding: 30px;
+}
