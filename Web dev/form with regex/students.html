@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registered Students</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Registered Students</h2>
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>SAP ID</th>
+            <th>Date of Birth</th>
+            <th>Division</th>
+            <th>Department</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+        </tr>
+        <script>
+            // Function to parse URL parameters
+            function getParameterByName(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, "\\$&");
+                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+            }
+
+            // Populate table with form data
+            var firstName = getParameterByName('firstName');
+            var lastName = getParameterByName('lastName');
+            var sapId = getParameterByName('sapId');
+            var dob = getParameterByName('dob');
+            var division = getParameterByName('division');
+            var department = getParameterByName('department');
+            var phoneNumber = getParameterByName('phoneNumber');
+            var email = getParameterByName('email');
+
+            var tableRow = "<tr><td>" + firstName + "</td><td>" + lastName + "</td><td>" + sapId + "</td><td>" + dob + "</td><td>" + division + "</td><td>" + department + "</td><td>" + phoneNumber + "</td><td>" + email + "</td></tr>";
+            document.querySelector('table').innerHTML += tableRow;
+        </script>
+    </table>
+    <button onclick="location.href='index.html';">Back to Registration</button>
+</body>
+</html>
