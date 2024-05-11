@@ -8,10 +8,18 @@ tsc --index
 
 js apne aap banega darna mat
 
+then first time kar rhe run tab initialise karenge
+tsc --init 
+
+
 fir run karne 
 node index
 
-check for errors 
+check for errors constant refresh
 tsc --watch index
 
 everytime run karne pehle compile fir run
+
+so
+tsc --index
+node index   //index file ka naam hai
