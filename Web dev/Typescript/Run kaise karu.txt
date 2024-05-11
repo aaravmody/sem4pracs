@@ -1,0 +1,17 @@
+npm i -g typescript
+
+
+uppar wala command se typescript install karo 
+
+pehla compile
+tsc --index
+
+js apne aap banega darna mat
+
+fir run karne 
+node index
+
+check for errors 
+tsc --watch index
+
+everytime run karne pehle compile fir run
