@@ -1,0 +1,38 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 25px;
+}
+
+.form label{
+    color:darkblue;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.form button{
+    color: white;
+    border: 5px;
+    border-radius: 10px;
+    font-size:medium;
+    font-weight: bold;
+    background-color:darkblue;
+}
+
+.container{
+    width: 80%;
+    height: 80%;
+    margin-top: 30px;
+    background-color: aliceblue;
+    border: 1px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+body{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
