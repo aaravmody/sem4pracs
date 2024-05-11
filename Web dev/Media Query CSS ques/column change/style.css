@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.box {
+    width: calc(25% - 20px);
+    background-color: #ccc;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 992px) {
+    .box {
+        width: calc(50% - 20px);
+    }
+}

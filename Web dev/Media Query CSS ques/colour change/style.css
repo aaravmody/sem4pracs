@@ -1,0 +1,9 @@
+body{
+    background-color: aqua;
+}
+
+@media (min-width:480px){
+    body{
+        background-color: lightgreen;
+    }
+}
