@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="box">
+        <div class="container">
+            <div class="high">
+                <input id="ans" readonly></p>
+            </div>
+            <div class="top">
+            <button onclick="display('7')">7</button>
+            <button onclick='display("8")'>8</button>
+            <button onclick='display("9")'>9</button>
+            <button class="adding" onclick="display('+')">+</button>
+        </div>
+        <div class="mid">
+            <button onclick='display("4")'>4</button>
+            <button onclick='display("5")'>5</button>
+            <button onclick='display("6")'>6</button>
+            <button class="subtraction" onclick="display('-')">-</button>
+        </div>
+        <div class="bottom">
+            <button onclick='display("1")'>1</button>
+            <button onclick='display("2")'>2</button>
+            <button onclick='display("3")'>3</button>
+            <button class="mul" onclick="display('*')">*</button>
+        </div>
+        <div class="lower">
+            <button onclick='display("0")'>0</button>
+            <button onclick='clearinput()' class="C">C</button>
+            <button class="equals" onclick="calculate()">=</button>
+            <button class="divide" onclick="display('/')">/</button>
+        </div>
+    </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
