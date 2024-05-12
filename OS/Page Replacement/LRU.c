@@ -47,17 +47,17 @@ void main()
         else if(count == noFrames)
         {
             fault++;
-            int min=99, minElement;
+            int min=99, minIndex;
             for (int j=0; j<noFrames; j++)
             {
                 if(timestamp[j]<min)
                 {
                     min = timestamp[j];
-                    minElement = j;
+                    minIndex = j;
                 }
             }
-            frames[minElement] = pages[i];
-            timestamp[minElement] = i;
+            frames[minIndex] = pages[i];
+            timestamp[minIndex] = i;
         }
         printf("Page : %d\tFrames : ", pages[i]);
         for (int j=0; j<noFrames; j++)
