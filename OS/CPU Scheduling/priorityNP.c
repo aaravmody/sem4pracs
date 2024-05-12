@@ -6,21 +6,22 @@ struct process{
 };
 struct process pq[10];
 
-int getHighPriorityProcess(int clock, int total){
-    int highPriorityProcess;
-    for (int i=0; i<total; i++){
-        if (pq[i].arrival <= clock && pq[i].completed != 1){
-            highPriorityProcess = i;
-            break;
+int getHighPriorityProcess(int clock, int total) {
+    int highPriorityProcess = -1; // Initialize with an invalid index
+    int maxPriority = INT_MIN;    // Initialize maxPriority with the minimum possible integer value
+
+    for (int i = 0; i < total; i++) {
+        if (pq[i].arrival <= clock && pq[i].completed != 1) {
+            if (pq[i].priority > maxPriority) {
+                highPriorityProcess = i;
+                maxPriority = pq[i].priority;
+            }
         }
     }
-    for(int i=highPriorityProcess; i<total; i++){
-        if (pq[i].arrival <= clock && pq[i].completed != 1 && pq[i].priority > pq[highPriorityProcess].priority){
-            highPriorityProcess = i;
-        }
-    }
+
     return highPriorityProcess;
 }
+
 
 void main(){
     int total, clock=0, completedProcess=0;
