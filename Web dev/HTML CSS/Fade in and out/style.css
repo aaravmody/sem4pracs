@@ -1,0 +1,8 @@
+@keyframes fade{
+    0%{opacity: 1;}
+    100%{opacity: 0;}
+}
+
+img{
+    animation: fade 3s infinite alternate;
+}
