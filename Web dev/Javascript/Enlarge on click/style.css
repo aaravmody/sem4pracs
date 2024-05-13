@@ -3,4 +3,5 @@
     height: 200px;
     object-fit: cover; 
     cursor: pointer; 
+    transition: ease-in 0.5s;
 }
