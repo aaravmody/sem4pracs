@@ -1,0 +1,12 @@
+.out{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /*isse zyada image hue toh next line pe jayenge*/
+    text-align: center;
+    justify-content: center;
+}
+
+img{
+    width: 300px;
+    padding: 25px;
+}
