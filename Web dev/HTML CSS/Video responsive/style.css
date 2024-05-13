@@ -1,0 +1,10 @@
+video{
+    width: 70%;
+    padding: 2rem;
+    max-width: 80rem;
+}
+
+body{
+    justify-content: center;
+    text-align: center;
+}
