@@ -1,0 +1,21 @@
+To observe lazy loading in action in the provided HTML code, you can follow these steps:
+
+1. Open the HTML file in a web browser.
+2. Open the browser's developer tools (usually by right-clicking on the page and selecting "Inspect" or pressing F12).
+3. Navigate to the "Network" tab in the developer tools.
+4. Reload the page (you can use Ctrl + R or Cmd + R).
+5. Observe the network requests made by the browser.
+6. You should notice that initially, only the HTML file and any external resources (like CSS or JavaScript files) are loaded.
+7. As you scroll down the page, or as the images become visible in the viewport, you'll see additional network requests being made for each image.
+8. The images will be loaded lazily, meaning they will only be fetched and displayed when they are about to become visible on the screen, as indicated by the `loading="lazy"` attribute.
+
+By observing the network activity in the browser's developer tools, you can confirm that lazy loading is indeed taking place for the images on the page.
+
+
+
+
+Lazy loading typically works for images regardless of whether they are sourced from a network or stored locally. As long as the images are included in the HTML markup and have the loading="lazy" attribute set, the browser will attempt to lazily load them.
+
+So, even if the images are stored locally on the user's device, lazy loading can still be applied to them. When the browser encounters an image with the loading="lazy" attribute, it defers the loading of that image until it is about to be displayed on the screen, regardless of whether the image is hosted on a server or stored locally.
+
+However, it's worth noting that lazy loading might not be as effective for locally stored images if they are small in file size and load quickly, as there may be minimal performance gain from deferring their loading. Lazy loading is most beneficial for larger images or images located far down on a page where the user might not immediately scroll.
