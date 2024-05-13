@@ -1,5 +1,5 @@
 img:hover {
-    animation: gol 4s ease-in forwards;
+    animation: gol 4s ease-in forwards infinite alternate;
 }
 
 @keyframes gol {
