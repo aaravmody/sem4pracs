@@ -1,0 +1,28 @@
+1. Normally karna ho toh
+
+    npx create-react-app counter
+
+    //counter matlab app ka naam
+
+    fir wo apne aap sab install kardega
+
+    to run
+    npm start
+
+
+2. Using vite 
+
+    npm create vite@latest
+    app ka naam
+    react
+    javascript
+
+    cd (app ka naam)
+    npm install
+
+    to run
+    npm run dev
+
+
+Maine vite se install kiya hai 
+extra files delete kardiye hai jo pre made aate hai
