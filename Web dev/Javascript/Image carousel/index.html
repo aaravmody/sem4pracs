@@ -1,0 +1,55 @@
+<!-- Deev ka code -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Carousel</title>
+</head>
+
+<body>
+    <div style="display: flex; flex-direction: column; padding: 20px;">
+        <img src="chapnak.jpg" id="image" width="500px">
+        <div style="display: block; justify-content: space-between; font-size: larger;">
+        <button id="left" style="margin-right: 390px; font-size: large; margin-top: 20px">Left</button>
+        <button id="right" style="font-size: large; margin-top: 20px;" >Right</button>
+    </div>
+    </div>
+</body>
+<script>
+    image = document.getElementById('image')
+    let array = ['chapnak.jpg', 'sodhi.jpg', 'scienist.png']
+    document.getElementById('right').addEventListener('click', () => {
+        const url = image.src;
+        imageIndex = 0;
+        const lastIndex = url.lastIndexOf('/');
+        const fileName = url.substring(lastIndex + 1);
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] == fileName) {
+                imageIndex = i;
+            }
+        }
+        imageIndex=(imageIndex+1)%array.length
+        image.src=array[imageIndex]
+    })
+    document.getElementById('left').addEventListener('click', () => {
+        const url = image.src;
+        imageIndex = 0;
+        const lastIndex = url.lastIndexOf('/');
+        const fileName = url.substring(lastIndex + 1);
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] == fileName) {
+                imageIndex = i;
+            }
+        }
+        if(imageIndex==0){
+            alert('First Image Cannot Go Towards Left')
+        }
+        else{
+            imageIndex=(imageIndex-1)%array.length
+            image.src=array[imageIndex]
+        }
+    })
+</script>
+
+</html>
