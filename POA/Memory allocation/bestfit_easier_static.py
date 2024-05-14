@@ -4,6 +4,7 @@ prono=int(input("Enter process number: "))
 pr=[]
 mem=[]
 
+
 for i in range(memno):
     mem.append(int(input("Memory space")))
 
@@ -11,6 +12,7 @@ for i in range(memno):
 for i in range(prono):
     pr.append(int(input("Process space")))
 
+mem.sort()
 print(pr)
 print(mem)
 
