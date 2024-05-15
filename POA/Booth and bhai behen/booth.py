@@ -30,8 +30,7 @@ if num1 < 0:
 
 binCompNum1 = twosComplement(binNum1)
 binCompNum1 = binCompNum1.zfill(maxlen)
-print(" A     Q     Q1     n")
-print(binNum1, binNum2, (binCompNum1)[-1], 0)
+
 
 count = maxlen
 m = binNum1
@@ -41,14 +40,16 @@ q1 = '0'
 a = "0"
 a = a.zfill(maxlen)
 rightshift = ""
+print(" A     Q     Q1     n")
+print(a, binNum2, q1, 0)
 while count > 0:
-    if q1 == '1' and q[maxlen - 1] == '0':
+    if q[maxlen - 1] == '0' and q1 == '1' :
         a = bin(int(a, 2) + int(m, 2)).replace('0b', '')
         if (len(a) > maxlen):
             a = a[1:]
         a = a.zfill(maxlen)
 
-    elif q1 == '0' and q[maxlen - 1] == '1':
+    elif q[maxlen - 1] == '1' and q1 == '0' :
         a = bin(int(a, 2) + int(minusm, 2)).replace('0b', '')
         if (len(a) > maxlen):
             a = a[1:]
