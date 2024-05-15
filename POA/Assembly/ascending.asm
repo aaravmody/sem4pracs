@@ -2,7 +2,6 @@
 ; You may customize this and other start-up templates; 
 ; The location of this template is c:\emu8086\inc\0_com_template.txt
 
-org 100h
 
 ; add your code here   
 
@@ -25,7 +24,7 @@ CODE SEGMENT
     mov al,[si]
     mov bl,[si+1]
     cmp al,bl
-    jnc down
+    jc down
     mov dl,[si+1]
     xchg [si],dl
     mov [si+1],dl
