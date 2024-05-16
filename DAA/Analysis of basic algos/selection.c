@@ -3,23 +3,24 @@
 int arr[]={23,32,45,3,564,75,22,1};
 
 
-void selection(int arr[])
+void selection()
 {
-    for(int i=0;i<n;i++)
+    int imin,i,j,temp;
+    for(i=0;i<n;i++)
     {
-        int min=arr[i],key=i;
-        for(int j=i;j<n;j++)
+        imin=i;
+        for(j=i+1;j<n;j++)
         {
-            if(arr[j]<min)
+            if(arr[j]<arr[imin])
             {
-                min=arr[j];
-                key=j;
+                imin=j;
             }
         }
-        int temp=arr[i];
-        arr[i]=arr[key];
-        arr[key]=temp;
+        temp=arr[imin];
+        arr[imin]=arr[i];
+        arr[i]=temp;
     }
+    
     for(int i=0;i<n;i++)
     {
         printf("%d ",arr[i]);
