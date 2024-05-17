@@ -15,8 +15,8 @@ void printLCS(int i, int j)
         return;
     if (b[i][j] == 'd')
     {
-        printf("%c", x[i - 1]);
         printLCS(i - 1, j - 1);
+        printf("%c", x[i - 1]);
     }
     else if (b[i][j] == 'u')
         printLCS(i - 1, j);

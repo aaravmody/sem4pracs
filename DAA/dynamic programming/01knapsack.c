@@ -1,34 +1,57 @@
 #include <stdio.h>
+#define MAX 100
 
-int max(int a, int b) { return (a > b)? a : b; }
+int numItems, maxWeight, stateCount;
+int profit[MAX], weight[MAX];
 
-int knapSack(int W, int wt[], int val[], int n)
-{
-   int i, w;
-   int K[3][4];
+struct State {
+    int profit, weight;
+} states[MAX];
 
-   for (i = 0; i <= n; i++)
-   {
-       for (w = 0; w <= W; w++)
-       {
-           if (i==0 || w==0)
-               K[i][w] = 0;
-           else if (wt[i-1] <= w)
-                 K[i][w] = max(val[i-1] + K[i-1][w-wt[i-1]],  K[i-1][w]);
-           else
-                 K[i][w] = K[i-1][w];
-       }
-   }
-
-   return K[n][W];
+void knapsack() {
+    int i, j;
+    int tempCount;
+    states[0].profit = 0;
+    states[0].weight = 0;
+    stateCount = 1;
+    
+    for (i = 0; i < numItems; i++) {
+        struct State tempStates[MAX];
+        tempCount = 0;
+        
+        for (j = 0; j < stateCount; j++) {
+            tempStates[j].profit = states[j].profit + profit[i];
+            tempStates[j].weight = states[j].weight + weight[i];
+            tempCount++;
+        }
+        
+        for (j = 0; j < tempCount; j++) {
+            if (tempStates[j].weight <= maxWeight) {
+                states[stateCount] = tempStates[j];
+                stateCount++;
+            }
+        }
+    }
+    
+    int maxProfit = 0;
+    for (i = 0; i < stateCount; i++) {
+        if (states[i].profit > maxProfit && states[i].weight <= maxWeight) {
+            maxProfit = states[i].profit;
+        }
+    }
+    printf("Maximum Profit: %d\n", maxProfit);
 }
 
-int main()
-{
-    int val[] = {2, 3, 5};
-    int wt[] = {3, 1, 2};
-    int  W = 4;
-    int n = sizeof(val)/sizeof(val[0]);
-    printf("%d", knapSack(W, wt, val, n));
+int main() {
+    int i;
+    printf("Enter number of items:\n");
+    scanf("%d", &numItems);
+    printf("Enter weight and profit for each item:\n");
+    for (i = 0; i < numItems; i++) {
+        scanf("%d %d", &weight[i], &profit[i]);
+    }
+    printf("Enter maximum weight capacity of knapsack:\n");
+    scanf("%d", &maxWeight);
+    knapsack();
     return 0;
 }
