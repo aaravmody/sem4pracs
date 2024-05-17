@@ -21,7 +21,7 @@ void nextcolour(int k)
         int count=0;
         for(int j=0;j<n;j++)
         {
-            if(k!=j && x[k]==x[j] && graph[k][j]!=0)
+            if(x[k]==x[j] && graph[k][j]!=0)
             {
                 break;
             }

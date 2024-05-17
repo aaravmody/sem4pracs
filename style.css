@@ -1,0 +1,12 @@
+nav:hover{
+    opacity: 0;
+}
+
+nav{
+    gap: 100px;
+
+}
+
+.btn-primary{
+    background-color: brown;
+}

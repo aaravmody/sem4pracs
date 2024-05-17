@@ -4,7 +4,7 @@ npm i -g typescript
 uppar wala command se typescript install karo 
 
 pehla compile
-tsc --index
+tsc index
 
 js apne aap banega darna mat
 
@@ -21,5 +21,5 @@ tsc --watch index
 everytime run karne pehle compile fir run
 
 so
-tsc --index
+tsc index
 node index   //index file ka naam hai
