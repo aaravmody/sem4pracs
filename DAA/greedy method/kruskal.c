@@ -1,76 +1,79 @@
-//astu ka hai
-
 #include <stdio.h>
 
-#define MAX_VERTICES 9
-#define MAX 999
+struct Edge {
+	int src, dest, weight;
+};
+struct Edge edges[100], mst[100];
+int adj[100][100], n, e;
 
-int cost[MAX_VERTICES][MAX_VERTICES];
-int parent[MAX_VERTICES];
-
-int find(int i)
-{
-    while (parent[i])
-    {
-        i = parent[i];
-    }
-    return i;
+void sortEdges() {
+	for (int i = 0; i < e - 1; i++) {
+		for (int j = 0; j < e - i - 1; j++) {
+			if (edges[j].weight > edges[j + 1].weight) {
+				struct Edge temp = edges[j];
+				edges[j] = edges[j + 1];
+				edges[j + 1] = temp;
+			}
+		}
+	}
 }
 
-int uni(int i, int j)
-{
-    if (i != j)
-    {
-        parent[j] = i;
-        return 1;
-    }
-    return 0;
+int findSet(int parent[], int i) {
+	if (parent[i] == -1) {
+		return i;
+	}
+	return findSet(parent, parent[i]);
 }
 
-int main()
-{
-    int n, ne = 1, mincost = 0;
-    printf("\n\tImplementation of Kruskal's algorithm\n");
-    printf("\nEnter the no. of vertices:");
-    scanf("%d", &n);
-    printf("\nEnter the cost adjacency matrix:\n");
-    for (int i = 1; i <= n; i++)
+void Union(int parent[], int x, int y) {
+	int xset = findSet(parent, x);
+	int yset = findSet(parent, y);
+	parent[xset] = yset;
+}
+
+void kruskal() {
+	int parent[n];
+	for (int i = 0; i < n; i++) {
+		parent[i] = -1;
+	}
+	int mstIndex = 0;
+	for (int i = 0; i < e; i++) {
+		int x = findSet(parent, edges[i].src);
+		int y = findSet(parent, edges[i].dest);
+		if (x != y) {
+			mst[mstIndex++] = edges[i];
+			Union(parent, x, y);
+		}
+	}
+	printf("Minimum Spanning Tree:\n");
+	for (int i = 0; i < n - 1; i++) 
     {
-        for (int j = 1; j <= n; j++)
-        {
-            scanf("%d", &cost[i][j]);
-            if (cost[i][j] == 0)
-                cost[i][j] = MAX;
-        }
-    }
-    printf("The edges of Minimum Cost Spanning Tree are\n");
-    while (ne < n)
-    {
-        int min = MAX;
-        int a, b;
-        int u = -1;
-        int v = -1;
-        for (int i = 1; i <= n; i++)
-        {
-            for (int j = 1; j <= n; j++)
-            {
-                if (cost[i][j] < min)
-                {
-                    min = cost[i][j];
-                    a = u = i;
-                    b = v = j;
-                }
-            }
-        }
-        u = find(u);
-        v = find(v);
-        if (uni(u, v))
-        {
-            printf("%d edge (%d,%d) = %d\n", ne++, a, b, min);
-            mincost += min;
-        }
-        cost[a][b] = cost[b][a] = MAX;
-    }
-    printf("\n\tMinimum cost = %d\n", mincost);
-    return 0;
+		printf("%c -> %c: %d\n", 'a' + mst[i].src, 'a' + mst[i].dest, mst[i].weight);
+		
+		
+	}
+}
+
+void main() {
+	n = 5; 
+	int adj[5][5] = {
+    {0,4,7,9,8},
+    {4,0,1,0,0},
+    {7,1,0,2,0},
+    {9,0,2,0,6},
+    {8,0,0,6,0},
+	};
+	e = 0;
+	for (int i = 0; i < n; i++) {
+		for (int j = i + 1; j < n; j++) {
+			if (adj[i][j] != 0) {
+				edges[e].src = i;
+				edges[e].dest = j;
+				edges[e].weight = adj[i][j];
+				e++;
+			}
+		}
+	}
+	sortEdges();
+	kruskal();
 }

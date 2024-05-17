@@ -1,79 +1,98 @@
 #include <stdio.h>
-#define n 5
 
-int map[5][5]={
-    {0,4,7,9,8},
-    {4,0,1,0,0},
-    {7,1,0,2,0},
-    {9,0,2,0,6},
-    {8,0,0,6,0}
-};
+int arr[10]={2,34,25,1,4,23,98},b[10],n=7;
 
-int dist[5],par[5],source=0,visited[5];
-
-int extractmin()
+void merge(int low,int mid,int high)
 {
-    int temp=10000,tempi=-1;
-    for(int i=0;i<5;i++)
+    int i=low;
+    int j=mid+1;
+    int k=0;
+    while(i<=mid && j<=high)
     {
-        if(dist[i]<temp && visited[i]!=1)
+        if(arr[i]<arr[j])
         {
-            temp=dist[i];
-            tempi=i;
+            b[k]=arr[i];
+            k++;
+            i++;
+        }
+        else{
+            b[k]=arr[j];
+            j++;
+            k++;
         }
     }
-    return tempi;
+    while(i<=mid)
+    {
+        b[k]=arr[i];
+        k++;
+        i++;
+    }
+    while(j<=high)
+    {
+        b[k]=arr[j];
+        j++;
+        k++;
+    }
+
+    i=low;
+    for(int f=0;f<k;f++)
+    {
+        arr[i]=b[f];
+        i++;
+    }
 }
 
-void initialise()
+int mergesort(int low,int high)
 {
-    for(int i=0;i<n;i++)
+    if(low<high)
     {
-        dist[i]=999;
-        par[i]=-1;
-        visited[i]=0;
+        int mid=(low+high)/2;
+        mergesort(low,mid);
+        mergesort(mid+1,high);
+        merge(low,mid,high);
     }
-    dist[source]=0;
 }
 
-void relax(int u,int v)
-{
-        if(dist[v]>dist[u]+map[u][v])
-        {
-            dist[v]=dist[u]+map[u][v];
-            par[v]=u;
-        }
-    }
-
-
-void djikstra()
-{
-    initialise();
-    int u;
+void selection(){
     for(int i=0;i<n;i++)
     {
-       u=extractmin();
-    for(int j=0;j<n;j++)
-    {
-        if(visited[j]==0 && map[u][j]!=0)
+        int tempi=i;
+        for(int j=i+1;j<n;j++)
         {
-            relax(u,j);
+            if(arr[j]<arr[tempi])
+            {
+                tempi=j;
+            }
         }
+        int temp=arr[i];
+        arr[i]=arr[tempi];
+        arr[tempi]=temp;
     }
-    visited[u]=1;
+}
+
+void insertion()
+{
+    int key;
+    for(int i=0;i<n;i++)
+    {
+        int j=i-1;
+        key=arr[i];
+        while(j>=0 && arr[j]>key)
+        {
+            arr[j+1]=arr[j];
+            j--;
+        }
+        arr[j+1]=key;
     }
 }
 
 void main()
 {
-    djikstra();
+    // mergesort(0,n-1);
+    // selection();
+    insertion();
     for(int i=0;i<n;i++)
     {
-        printf("%d",dist[i]);
-    }
-
-    for(int i=0;i<n;i++)
-    {
-        printf("%d",par[i]);
+        printf("%d ",arr[i]);
     }
 }
