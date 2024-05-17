@@ -50,7 +50,7 @@ void relax(int u,int v)
 }
 
 
-void Dijkstra()
+void Prim()
 {
     initialize_Single_Soure();
 
@@ -72,7 +72,7 @@ void Dijkstra()
 
 void main()
 {
-    Dijkstra();
+    Prim();
     printf("Distance :\n");
 
     for(int i=0;i<n;i++)
